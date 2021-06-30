@@ -1,31 +1,25 @@
 import React from "react";
-import {NavLink} from "react-router-dom";
+import DialogItem from "./DialogItem/DialogsItem";
 import s from './Dialogs.module.css';
+import Message from "./Message/Message";
+import {DialogsPageType} from "../../redax/state";
 
-
-const DialogItem = (props: any) => {
-    let path = '/dialogs/1' + props.id
-    return <div className={s.dialog + ' ' + s.active}>
-    <NavLink to={path}> {props.name}</NavLink>
-</div>
+type PropsType={
+    dialogsPage:DialogsPageType
 }
 
-const  Message = (props: any) => {
-   return  <div className={s.dialogs}>{props.message}</div>
-}
 
-const Dialogs = (props: any) => {
+const Dialogs = (props: PropsType) => {
+    const dialogsElements = props.dialogsPage.dialogs.map(d => <DialogItem dialog={d}/>)
+    const messagesElements = props.dialogsPage.messages.map(m => <Message message={m}/>)
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
-                <DialogItem name='Roman' id='1'/>
-                <DialogItem name='Roman' id='2'/>
-                <DialogItem name='Roman' id='3'/>
+                {dialogsElements}
+
             </div>
             <div className={s.messages}>
-                <Message message='jr'/>
-                <Message message='kk'/>
-                <Message message='hh'/>
+                {messagesElements}
             </div>
         </div>
     )
