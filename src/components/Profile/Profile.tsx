@@ -7,6 +7,9 @@ import {ProfilePageType} from "../../redax/state";
 type PropsType = {
     profilePage: ProfilePageType
     addPost:(m:string)=>void
+    changeNewText: (n: string) => void
+    messageForNewPost: string
+
 
 }
 
@@ -15,7 +18,11 @@ const Profile = (props: PropsType) => {
     return (
         <div>
             <ProfileInfo/>
-            <MyPosts posts={props.profilePage.posts} addPost={props.addPost}/>
+            <MyPosts posts={props.profilePage.posts}
+                     addPost={props.addPost}
+                     changeNewText={props.changeNewText}
+                     messageForNewPost={props.profilePage.messageForNewPost}
+            />
         </div>
     )
 }

@@ -20,6 +20,8 @@ export type PostType = {
 
 export type ProfilePageType = {
     posts: Array<PostType>
+    messageForNewPost:string
+
 }
 
 export type DialogsPageType = {
@@ -34,12 +36,13 @@ export type RootStateType = {
 }
 
 
-const state = {
+const state: RootStateType= {
     profilePage: {
         posts: [
             {id: 1, message: 'vvftt', LikesCount: 10},
             {id: 2, message: 'kiig', LikesCount: 10},
-        ]
+        ],
+        messageForNewPost: ''
     },
     dialogsPage: {
         dialogs: [
@@ -66,4 +69,11 @@ export const addPost = (postText: string) => {
     state.profilePage.posts.push(newPost);
     rerenderEntireTree(state);
 }
+
+export const changeNewText=(newText: string) => {
+    state.profilePage.messageForNewPost=newText;
+    rerenderEntireTree(state)
+}
+
+
 export default state;
