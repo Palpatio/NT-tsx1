@@ -20,7 +20,7 @@ export type PostType = {
 
 export type ProfilePageType = {
     posts: Array<PostType>
-    messageForNewPost:string
+    messageForNewPost: string
 
 }
 
@@ -36,7 +36,7 @@ export type RootStateType = {
 }
 
 
-const state: RootStateType= {
+const state: RootStateType = {
     profilePage: {
         posts: [
             {id: 1, message: 'vvftt', LikesCount: 10},
@@ -59,19 +59,20 @@ const state: RootStateType= {
 
 }
 
-export const addPost = (postText: string) => {
+export const addPost = () => {
     debugger;
     const newPost: PostType = {
         id: new Date().getTime(),
-        message: postText,
+        message: state.profilePage.messageForNewPost,
         LikesCount: 0
     }
     state.profilePage.posts.push(newPost);
+    state.profilePage.messageForNewPost = '';
     rerenderEntireTree(state);
 }
 
-export const changeNewText=(newText: string) => {
-    state.profilePage.messageForNewPost=newText;
+export const changeNewText = (newText: string) => {
+    state.profilePage.messageForNewPost = newText;
     rerenderEntireTree(state)
 }
 

@@ -11,7 +11,7 @@ export const rerenderEntireTree = (state: RootStateType) => {
                  addPost={addPost}
                  changeNewText={changeNewText}
 
-/>,
+            />,
         </BrowserRouter>, document.getElementById('root'))
 }
 
