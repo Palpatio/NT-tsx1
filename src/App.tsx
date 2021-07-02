@@ -9,7 +9,6 @@ import {RootStateType, StoreType} from "./redax/state";
 
 type PropsType = {
     state: RootStateType
-    store: StoreType
     addPost: () => void
     changeNewText: (n: string) => void
 
@@ -23,8 +22,8 @@ const App = (props: PropsType) => {
             <div className='app-wrapper-content'>
                 <Route path='/dialogs' render={() => <Dialogs dialogsPage={props.state.dialogsPage}/>}/>
                 <Route path='/profile' render={() => <Profile profilePage={props.state.profilePage}
-                                                              addPost={props.store.addPost.bind(props.store)}
-                                                              changeNewText={props.store.changeNewText.bind(props.store)}
+                                                              addPost={props.addPost}
+                                                              changeNewText={props.changeNewText}
                 />}/>
 
             </div>
