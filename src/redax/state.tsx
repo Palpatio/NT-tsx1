@@ -1,5 +1,13 @@
-import React from "react";
-import {rerenderEntireTree} from "../render";
+import {callbackify} from "util";
+
+let rerenderTree =()=> {
+    console.log('State changed')
+}
+
+
+export const subscribe=(callback:()=>void)=>{
+    rerenderTree=callback;
+}
 
 
 export type MessageType = {
@@ -68,12 +76,12 @@ export const addPost = () => {
     }
     state.profilePage.posts.push(newPost);
     state.profilePage.messageForNewPost = '';
-    rerenderEntireTree(state);
+    rerenderTree();
 }
 
 export const changeNewText = (newText: string) => {
     state.profilePage.messageForNewPost = newText;
-    rerenderEntireTree(state)
+    rerenderTree()
 }
 
 
