@@ -9,9 +9,8 @@ import {BrowserRouter} from "react-router-dom";
 const rerenderTree = () => {
     ReactDOM.render(
         <BrowserRouter>
-            <App state={store.getState()}
-                 addPost={store.addPost.bind(store)}
-                 changeNewText={store.changeNewText.bind(store)}
+            <App state={store.getState()}  dispatch={store.dispatch.bind(store)}
+
             />,
         </BrowserRouter>, document.getElementById('root'))
 }

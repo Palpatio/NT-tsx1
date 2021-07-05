@@ -1,12 +1,27 @@
 export type StoreType = {
     _state: RootStateType
+    _rerenderTree: () => void
+    getState: () => RootStateType
     changeNewText: (newText: string) => void
     addPost: () => void
-    _rerenderTree: () => void
     subscribe: (callback: () => void) => void
-    getState: () => RootStateType
-
+    dispatch: (action: ActionsType) => void
 }
+
+export type ActionsType = ReturnType<typeof addPostAC> | ReturnType<typeof changNewTextAC>
+export const addPostAC = (postText: string) => {
+    return {
+        type: 'ADD-POST',
+        postText: postText
+    } as const
+}
+export const changNewTextAC = (newText: string) => {
+    return {
+        type: 'CHANGE-NEW-TEXT',
+        newText: newText
+    } as const
+}
+
 
 const store: StoreType = {
     _state: {
@@ -31,6 +46,9 @@ const store: StoreType = {
         }
 
     },
+    _rerenderTree() {
+        console.log('State changed')
+    },
     changeNewText(newText: string) {
         this._state.profilePage.messageForNewPost = newText;
         this._rerenderTree()
@@ -41,21 +59,32 @@ const store: StoreType = {
             message: this._state.profilePage.messageForNewPost,
             LikesCount: 0
         }
-        this._state.profilePage.posts.push(newPost);
+        this._state.profilePage.posts.push();
         this._state.profilePage.messageForNewPost = '';
         this._rerenderTree();
-    },
-    _rerenderTree() {
-        console.log('State changed')
     },
     subscribe(callback) {
         this._rerenderTree = callback
     },
     getState() {
         return this._state;
+    },
+    dispatch(action: any) {
+        if (action.type === 'ADD-POST') {
+            const newPost: PostType = {
+                id: new Date().getTime(),
+                message: action.postText,
+                LikesCount: 0
+            }
+            this._state.profilePage.posts.push(newPost);
+            this._state.profilePage.messageForNewPost = '';
+            this._rerenderTree();
+        } else if (action.type === 'CHANGE-NEW-TEXT') {
+            this._state.profilePage.messageForNewPost = action.newText;
+            this._rerenderTree()
+        }
     }
 }
-
 export type MessageType = {
     id: number
     message: string

@@ -2,13 +2,11 @@ import React from "react";
 import s from './Profile.module.css'
 import MyPosts from "./My Posts/MyPosts";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
-import {ProfilePageType} from "../../redax/state";
+import {ActionsType, ProfilePageType} from "../../redax/state";
 
 type PropsType = {
     profilePage: ProfilePageType
-    addPost: () => void
-    changeNewText: (n: string) => void
-
+    dispatch: (action: ActionsType)=>void
 
 }
 
@@ -18,8 +16,8 @@ const Profile = (props: PropsType) => {
         <div>
             <ProfileInfo/>
             <MyPosts profilePage={props.profilePage}
-                     addPost={props.addPost}
-                     changeNewText={props.changeNewText}
+                     dispatch={props.dispatch}
+
 
             />
         </div>
