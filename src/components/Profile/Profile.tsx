@@ -2,11 +2,12 @@ import React from "react";
 import s from './Profile.module.css'
 import MyPosts from "./My Posts/MyPosts";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
-import {ActionsType, ProfilePageType} from "../../redax/state";
+import { ProfilePageType} from "../../redax/state";
+import { ActionsType } from "../../redax/dispatchTypes";
 
 type PropsType = {
     profilePage: ProfilePageType
-    dispatch: (action: ActionsType)=>void
+    dispatch: (action: ActionsType) => void
 
 }
 

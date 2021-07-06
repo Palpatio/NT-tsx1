@@ -1,7 +1,10 @@
 import React, {ChangeEvent} from "react";
+import { ActionsType } from "../../../redax/dispatchTypes";
+import { ProfilePageType } from "../../../redax/state";
 import s from './MyPost.module.css'
 import Post from "./Post/Post";
-import {ActionsType, addPostAC, changNewTextAC, ProfilePageType} from "../../../redax/state";
+import {addPostAC, updateNewPostTextAC} from "../../../redax/profile-reducer";
+
 
 
 type PropsType = {
@@ -15,7 +18,7 @@ const MyPosts = (props: PropsType) => {
         props.dispatch(addPostAC())
     }
     const newTextChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        props.dispatch(changNewTextAC(e.currentTarget.value))
+        props.dispatch(updateNewPostTextAC(e.currentTarget.value))
     }
     return <div className={s.postsBlock}>
         <h3>My post</h3>
