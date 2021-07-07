@@ -1,4 +1,4 @@
-import { PostType, ProfilePageType} from "./state";
+import { PostType, ProfilePageType} from "./store";
 import {ActionsType, AddPostActionType, UpdateNewPostTextActionType} from "./dispatchTypes";
 
 const ADD_POST = 'ADD-POST';

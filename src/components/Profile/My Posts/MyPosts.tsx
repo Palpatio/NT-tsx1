@@ -1,9 +1,9 @@
 import React, {ChangeEvent} from "react";
-import { ActionsType } from "../../../redax/dispatchTypes";
-import { ProfilePageType } from "../../../redax/state";
+import { ActionsType } from "../../../redux/dispatchTypes";
+import { ProfilePageType } from "../../../redux/store";
 import s from './MyPost.module.css'
 import Post from "./Post/Post";
-import {addPostAC, updateNewPostTextAC} from "../../../redax/profile-reducer";
+import {addPostAC, updateNewPostTextAC} from "../../../redux/profile-reducer";
 
 
 

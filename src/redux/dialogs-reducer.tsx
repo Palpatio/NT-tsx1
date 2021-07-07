@@ -1,5 +1,5 @@
 import {ActionsType, SendMessageActionType, UpdateNewMessageBodyActionType} from "./dispatchTypes";
-import {DialogsPageType, MessageType} from "./state";
+import {DialogsPageType, MessageType} from "./store";
 
 const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY'
 const SEND_MESSAGE = 'SEND-MESSAGE'
