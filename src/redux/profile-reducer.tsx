@@ -1,10 +1,18 @@
-import { PostType, ProfilePageType} from "./store";
+import {PostType, ProfilePageType} from "./store";
 import {ActionsType, AddPostActionType, UpdateNewPostTextActionType} from "./dispatchTypes";
 
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 
-export const profileReducer = (state: ProfilePageType, action: ActionsType) => {
+
+const initialState = {
+    posts: [
+        {id: 1, message: 'vvftt', LikesCount: 10},
+        {id: 2, message: 'kiig', LikesCount: 10},
+    ],
+    messageForNewPost: ''
+};
+export const profileReducer = (state: ProfilePageType = initialState, action: ActionsType) => {
     switch (action.type) {
         case ADD_POST:
             const newPost: PostType = {
@@ -12,11 +20,11 @@ export const profileReducer = (state: ProfilePageType, action: ActionsType) => {
                 message: state.messageForNewPost,
                 LikesCount: 0
             };
-        state.posts.push(newPost);
-        state.messageForNewPost = '';
+            state.posts.push(newPost);
+            state.messageForNewPost = '';
             return state;
         case UPDATE_NEW_POST_TEXT:
-        state.messageForNewPost = action.newText;
+            state.messageForNewPost = action.newText;
             return state;
         default:
             return state;
