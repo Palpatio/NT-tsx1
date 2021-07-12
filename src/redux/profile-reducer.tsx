@@ -10,7 +10,7 @@ const initialState = {
         {id: 1, message: 'vvftt', LikesCount: 10},
         {id: 2, message: 'kiig', LikesCount: 10},
     ],
-    messageForNewPost: ''
+    messageForNewPost: 'it-kamasutra.com'
 };
 export const profileReducer = (state: ProfilePageType = initialState, action: ActionsType) => {
     switch (action.type) {

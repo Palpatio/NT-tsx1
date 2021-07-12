@@ -4,14 +4,11 @@ import s from './../Dialogs.module.css';
 import {DialogType} from "../../../redux/store";
 
 
-type PropsType={
-    dialog:DialogType
-}
 
-const DialogItem = (props: PropsType) => {
-    let path = '/dialogs/1' + props.dialog.id
+const DialogItem = (props: DialogType) => {
+    let path = '/dialogs/1' + props.id
     return <div className={s.dialog + ' ' + s.active}>
-        <NavLink to={path}> {props.dialog.name}</NavLink>
+        <NavLink to={path}> {props.name}</NavLink>
     </div>
 }
 

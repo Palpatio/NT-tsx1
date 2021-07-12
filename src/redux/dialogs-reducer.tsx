@@ -12,9 +12,9 @@ const initialState = {
         {id: 3, name: 'Roman'}
     ],
     messages: [
-        {id: 1, message: 'ffff'},
-        {id: 2, message: 'fffffv'},
-        {id: 3, message: 'bfbfbf'}
+        {id: 1, message: 'Hi'},
+        {id: 2, message: 'Yo'},
+        {id: 3, message: 'Hello'}
     ],
     newMessageBody: ''
 }
