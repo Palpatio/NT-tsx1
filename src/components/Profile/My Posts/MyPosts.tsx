@@ -1,16 +1,16 @@
 import React, {ChangeEvent} from "react";
-import {PostType, ProfilePageType} from "../../../redux/store";
 import s from './MyPost.module.css'
 import Post from "./Post/Post";
+import {ProfilePageType} from "../../../types/types";
 
 type PropsType = {
-    posts: PostType[]
-    newPostText: string
+    profilePageType: ProfilePageType
     addPost: () => void
     updateNewPostText: (text: string) => void
 }
 const MyPosts = (props: PropsType) => {
-    const postsElements = props.posts.map(p => <Post message={p.message} LikesCount={p.LikesCount}/>)
+    const postsElements = props.profilePageType.posts.map(p =>
+        <Post key={p.id} id={p.id} postMessage={p.postMessage} LikeCount={p.LikeCount}/>)
 
     let addPost = () => {
         props.addPost();
@@ -24,7 +24,7 @@ const MyPosts = (props: PropsType) => {
         <h3>My post</h3>
         <div>
             <div>
-                <textarea value={props.newPostText} onChange={onPostChange}/>
+                <textarea value={props.profilePageType.newPostText} onChange={onPostChange}/>
             </div>
             <div>
                 <button onClick={addPost}>Add post</button>

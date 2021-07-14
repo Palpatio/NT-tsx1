@@ -1,9 +1,5 @@
-import {ActionsType, SendMessageActionType, UpdateNewMessageBodyActionType} from "./dispatchTypes";
-import {DialogsPageType, MessageType} from "./store";
-
-const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY'
-const SEND_MESSAGE = 'SEND-MESSAGE'
-
+import {ActionsType, SendMessageAT, UpdateNewMessageBodyAT} from "../types/dispatchTypes";
+import {DialogsPageType, MessageType} from "../types/types";
 
 const initialState = {
     dialogs: [
@@ -16,30 +12,30 @@ const initialState = {
         {id: 2, message: 'Yo'},
         {id: 3, message: 'Hello'}
     ],
-    newMessageBody: ''
+    newMessageText: ''
 }
 
 export const dialogsReducer = (state: DialogsPageType = initialState, action: ActionsType) => {
     switch (action.type) {
-        case SEND_MESSAGE:
+        case 'SEND-MESSAGE':
             const newMessageBody: MessageType = {
                 id: 6,
-                message: state.newMessageBody
+                message: state.newMessageText
             };
             state.messages.push(newMessageBody)
-            state.newMessageBody = ''
+            state.newMessageText = ''
             return state;
-        case UPDATE_NEW_MESSAGE_BODY:
-            state.newMessageBody = action.newMessageText
+        case 'UPDATE-NEW-MESSAGE-BODY':
+            state.newMessageText = action.newMessageText
             return state;
     }
     return state;
 }
 
-export const sendMessageAC = (): SendMessageActionType =>
-    ({type: SEND_MESSAGE})
+export const sendMessageAC = (): SendMessageAT =>
+    ({type: 'SEND-MESSAGE'})
 
-export const updateNewMessageBodyAC = (text: string): UpdateNewMessageBodyActionType =>
-    ({type: UPDATE_NEW_MESSAGE_BODY, newMessageText: text})
+export const updateNewMessageBodyAC = (text: string): UpdateNewMessageBodyAT =>
+    ({type: 'UPDATE-NEW-MESSAGE-BODY', newMessageText: text})
 
 export default dialogsReducer;

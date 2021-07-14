@@ -1,8 +1,6 @@
-import {PostType, ProfilePageType} from "./store";
-import {ActionsType, AddPostActionType, UpdateNewPostTextActionType} from "./dispatchTypes";
-
-const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+import {PostType, ProfilePageType} from "../types/types";
+import { AddPostAT, UpdateNewPostTextAT} from "../types/dispatchTypes";
+import {AppDispatch} from "./redux-store";
 
 
 const initialState = {
@@ -12,19 +10,19 @@ const initialState = {
     ],
     messageForNewPost: 'it-kamasutra.com'
 };
-export const profileReducer = (state: ProfilePageType = initialState, action: ActionsType) => {
+const profileReducer = (state: ProfilePageType = initialState, action: AppDispatch) => {
     switch (action.type) {
-        case ADD_POST:
+        case 'ADD-POST':
             const newPost: PostType = {
                 id: new Date().getTime(),
-                message: state.messageForNewPost,
+                message: state.newPostText,
                 LikesCount: 0
             };
             state.posts.push(newPost);
-            state.messageForNewPost = '';
+            state.newPostText = '';
             return state;
-        case UPDATE_NEW_POST_TEXT:
-            state.messageForNewPost = action.newText;
+        case 'UPDATE-NEW-POST-TEXT':
+            state.newPostText = action.newText;
             return state;
         default:
             return state;
@@ -34,10 +32,10 @@ export const profileReducer = (state: ProfilePageType = initialState, action: Ac
 }
 
 
-export const addPostAC = (): AddPostActionType =>
-    ({type: ADD_POST})
+export const addPostAC = (): AddPostAT =>
+    ({type: 'ADD-POST'})
 
-export const updateNewPostTextAC = (text: string): UpdateNewPostTextActionType =>
-    ({type: UPDATE_NEW_POST_TEXT, newText: text})
+export const updateNewPostTextAC = (text: string): UpdateNewPostTextAT =>
+    ({type: 'UPDATE-NEW-POST-TEXT', newText: text})
 
 export default profileReducer;

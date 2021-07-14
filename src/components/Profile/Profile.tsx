@@ -1,6 +1,7 @@
 import React from "react";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MyPostsContainer from "./My Posts/MyPostsContainer";
+import s from './Profile.module.css'
 
 // type PropsType = {
 //     profilePage: ProfilePageType
@@ -9,9 +10,9 @@ import MyPostsContainer from "./My Posts/MyPostsContainer";
 
 const Profile = () => {
     return (
-        <div>
+        <div className={s.content}>
             <ProfileInfo/>
-            <MyPostsContainer />
+            <MyPostsContainer/>
         </div>
     )
 }

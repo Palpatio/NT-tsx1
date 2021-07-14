@@ -33,7 +33,7 @@ export type ProfilePageType = {
     posts: Array<PostType>
     newPostText: string
 }
-export type DialogsPageType = {
+export type DialogsPageType= {
     dialogs: Array<DialogType>
     messages: Array<MessageType>
     newMessageText: string

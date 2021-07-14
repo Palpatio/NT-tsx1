@@ -1,20 +1,20 @@
 
 import {UserType} from "./types";
 
-export type SendMessageActionType = {
+export type SendMessageAT = {
     type: 'SEND-MESSAGE'
 }
 
-export type UpdateNewMessageBodyActionType = {
+export type UpdateNewMessageBodyAT = {
     type: 'UPDATE-NEW-MESSAGE-BODY'
     newMessageText: string
 }
 
-export type AddPostActionType = {
+export type AddPostAT = {
     type: 'ADD-POST'
 }
 
-export type UpdateNewPostTextActionType = {
+export type UpdateNewPostTextAT = {
     type: 'UPDATE-NEW-POST-TEXT'
     newText: string
 }
@@ -34,10 +34,10 @@ export type SetUsersAT = {
     users: UserType[]
 }
 
-export type DispatchActionsType = SendMessageActionType
-    | UpdateNewMessageBodyActionType
-    | AddPostActionType
-    | UpdateNewPostTextActionType
+export type ActionsType = SendMessageAT
+    | UpdateNewMessageBodyAT
+    | AddPostAT
+    | UpdateNewPostTextAT
     | FollowUserAT
     | UnfollowUserAT
     | SetUsersAT
