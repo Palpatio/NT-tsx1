@@ -16,7 +16,7 @@ const profileReducer = (state: ProfilePageType = initialState, action: AppDispat
             const newPost: PostType = {
                 id: new Date().getTime(),
                 message: state.newPostText,
-                LikesCount: 0
+                LikesCount: 10
             };
             state.posts.push(newPost);
             state.newPostText = '';
