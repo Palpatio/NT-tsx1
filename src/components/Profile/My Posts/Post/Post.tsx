@@ -9,7 +9,7 @@ const Post: React.FC<PostType> = (props) => {
         <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbNslP7-_P7jz5MrT5yhW14y_IzBDbZZT0ag&usqp=CAU'/>
         {props.postMessage}
         <div>
-            <span>{props.LikeCount}</span>
+            <span>{props.likeCount}</span>
         </div>
 
     </div>

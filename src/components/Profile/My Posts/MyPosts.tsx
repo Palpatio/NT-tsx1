@@ -10,7 +10,7 @@ type PropsType = {
 }
 const MyPosts = (props: PropsType) => {
     const postsElements = props.profilePageType.posts.map(p =>
-        <Post key={p.id} id={p.id} postMessage={p.postMessage} LikeCount={p.LikeCount}/>)
+        <Post key={p.id} id={p.id} postMessage={p.postMessage} likeCount={p.likeCount}/>)
 
     let addPost = () => {
         props.addPost();

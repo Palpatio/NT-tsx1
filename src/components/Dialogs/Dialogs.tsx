@@ -9,12 +9,12 @@ import {DialogsPageType} from "../../types/types";
 type PropsType = {
     updateNewMessageBody: (body: string) => void
     sendMessage: () => void
-    dialogsPage: DialogsPageType
+    dialogsPageType: DialogsPageType
 }
 
 function Dialogs(props: PropsType) {
-    const dialogsItems = props.dialogsPage.dialogs.map(d => <DialogItem key={d.id} id={d.id} name={d.name}/>)
-    const messageItems = props.dialogsPage.messages.map(m => <Message key={m.id} id={m.id} message={m.message}/>)
+    const dialogsItems = props.dialogsPageType.dialogs.map(d => <DialogItem key={d.id} id={d.id} name={d.name}/>)
+    const messageItems = props.dialogsPageType.messages.map(m => <Message key={m.id} id={m.id} message={m.message}/>)
 
     const onMessageChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
         props.updateNewMessageBody(e.currentTarget.value)
@@ -35,7 +35,7 @@ function Dialogs(props: PropsType) {
                     <div>
                         <textarea
                             placeholder="type your message"
-                            value={props.dialogsPage.newMessageText}
+                            value={props.dialogsPageType.newMessageText}
                             onChange={onMessageChange}
                         />
                     </div>

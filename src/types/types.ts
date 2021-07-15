@@ -9,7 +9,7 @@ export type MessageType = {
 export type PostType = {
     id: number
     postMessage: string
-    LikeCount: number
+    likeCount: number
 }
 
 export type LocationType = {

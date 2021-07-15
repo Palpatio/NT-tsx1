@@ -11,6 +11,7 @@ const mapStateToProps = (state: AppStateType) => {
         dialogsPageType: state.dialogsPageType
     }
 }
+
 const mapDispatchToProps = (dispatch: AppDispatch) => {
     return {
         updateNewMessageBody: (body: string) => {dispatch(updateNewMessageBodyAC(body))},
@@ -18,5 +19,6 @@ const mapDispatchToProps = (dispatch: AppDispatch) => {
     }
 }
 
-const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
+const DialogsContainer = connect(mapStateToProps, mapDispatchToProps) (Dialogs);
+
 export default DialogsContainer;

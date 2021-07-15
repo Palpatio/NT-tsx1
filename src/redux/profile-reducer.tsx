@@ -1,34 +1,43 @@
 import {PostType, ProfilePageType} from "../types/types";
-import { AddPostAT, UpdateNewPostTextAT} from "../types/dispatchTypes";
-import {AppDispatch} from "./redux-store";
+import {ActionsType, AddPostAT, UpdateNewPostTextAT} from "../types/dispatchTypes";
+
 
 
 const initialState = {
     posts: [
-        {id: 1, message: 'vvftt', LikesCount: 10},
-        {id: 2, message: 'kiig', LikesCount: 10},
+        {id: 1, postMessage: 'Hello how are you ', likeCount: 14},
+        {id: 2, postMessage: 'Oh my god', likeCount: 21},
     ],
-    messageForNewPost: 'it-kamasutra.com'
-};
-const profileReducer = (state: ProfilePageType = initialState, action: AppDispatch) => {
+    newPostText: ''
+}
+
+const profileReducer = (state: ProfilePageType = initialState, action: ActionsType) => {
     switch (action.type) {
-        case 'ADD-POST':
+        case 'UPDATE-NEW-POST-TEXT': {
+            return {
+                ...state,
+                newPostText: action.newText
+            }
+        }
+        case 'ADD-POST': {
             const newPost: PostType = {
-                id: new Date().getTime(),
-                message: state.newPostText,
-                LikesCount: 10
+                id: 5,
+                postMessage: state.newPostText,
+                likeCount: 0
             };
-            state.posts.push(newPost);
-            state.newPostText = '';
-            return state;
-        case 'UPDATE-NEW-POST-TEXT':
-            state.newPostText = action.newText;
-            return state;
+            if (newPost.postMessage.trim() !== '') {
+                return {
+                    ...state,
+                    posts: [newPost, ...state.posts],
+                    newPostText: ''
+                }
+            } else {
+                return state
+            }
+        }
         default:
             return state;
-
     }
-
 }
 
 
