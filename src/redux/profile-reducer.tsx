@@ -4,7 +4,7 @@ import {ActionsType, AddPostAT, UpdateNewPostTextAT} from "../types/dispatchType
 const initialState = {
     posts: [
         {id: 1, postMessage: 'Hello  ', likeCount: 14},
-        {id: 2, postMessage: 'Q', likeCount: 21},
+        {id: 2, postMessage: 'Q-Q', likeCount: 21},
     ],
     newPostText: ''
 }

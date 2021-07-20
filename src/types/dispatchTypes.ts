@@ -1,5 +1,5 @@
 
-import {UserType} from "./types";
+import {UsersType} from "./types";
 
 export type SendMessageAT = {
     type: 'SEND-MESSAGE'
@@ -31,7 +31,7 @@ export type UnfollowUserAT = {
 
 export type SetUsersAT = {
     type: 'SET-USERS'
-    users: UserType[]
+    users: UsersType[]
 }
 
 export type ActionsType = SendMessageAT

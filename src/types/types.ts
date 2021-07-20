@@ -12,22 +12,21 @@ export type PostType = {
     likeCount: number
 }
 
-export type LocationType = {
-    city: string
-    country: string
-}
 
-export type UserType = {
+export type UsersType = {
+    name: string
     id: number
-    photoUrl: string
+    uniqueUrlName: string | null
+    photos: {
+        small: string | undefined
+        large: string | undefined
+    }
+    status: string | null
     followed: boolean
-    fullName: string
-    status: string
-    location: LocationType
 }
 
 export type UsersPageType = {
-    users: UserType[]
+    items: UsersType[]
 }
 export type ProfilePageType = {
     posts: Array<PostType>
