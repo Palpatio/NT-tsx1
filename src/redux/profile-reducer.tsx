@@ -1,12 +1,10 @@
 import {PostType, ProfilePageType} from "../types/types";
 import {ActionsType, AddPostAT, UpdateNewPostTextAT} from "../types/dispatchTypes";
 
-
-
 const initialState = {
     posts: [
-        {id: 1, postMessage: 'Hello how are you ', likeCount: 14},
-        {id: 2, postMessage: 'Oh my god', likeCount: 21},
+        {id: 1, postMessage: 'Hello  ', likeCount: 14},
+        {id: 2, postMessage: 'Q', likeCount: 21},
     ],
     newPostText: ''
 }

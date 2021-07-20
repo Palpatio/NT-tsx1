@@ -34,7 +34,7 @@ function Dialogs(props: PropsType) {
                 <div>
                     <div>
                         <textarea
-                            placeholder="type your message"
+                            placeholder="Hello Bro"
                             value={props.dialogsPageType.newMessageText}
                             onChange={onMessageChange}
                         />
