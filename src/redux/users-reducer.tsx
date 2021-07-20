@@ -8,14 +8,16 @@ const initialState = {
     items: [],
 };
 
-const usersReducer = (state: UsersPageType = initialState, action: ActionsType) => {
+const usersReducer = (state: UsersPageType = initialState, action: ActionsType): UsersPageType => {
     switch (action.type) {
         case 'FOLLOW':
-            return {...state, users: state.items.map(u => u.id === action.userID ? {...u, followed: true} : u)}
+            return {...state, items: state.items.map(u => u.id === action.userID ? {...u, followed: true} : u)}
         case 'UNFOLLOW':
-            return {...state, users: state.items.map(u => u.id === action.userID ? {...u, followed: false} : u)}
+            return {...state, items: state.items.map(u => u.id === action.userID ? {...u, followed: false} : u)}
         case 'SET-USERS':
-            return {...state, users: [...state.items, ...action.users]}
+           let a =  {...state, items: [...state.items, ...action.users]}
+            debugger
+            return a
         default:
             return state;
     }
@@ -30,6 +32,7 @@ export const unfollowAC = (userID: number): UnfollowUserAT => {
 }
 
 export const setUsersAC = (users: UsersType[]): SetUsersAT => {
+    debugger
     return {type: 'SET-USERS', users}
 }
 export default usersReducer;

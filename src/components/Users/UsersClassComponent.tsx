@@ -1,5 +1,5 @@
 import React from 'react';
-import s from './users.module.css'
+import s from './Users.module.css'
 import {UsersPageType, UsersType,} from "../../types/types";
 import axios from 'axios';
 import userPhoto from '../../assets/images/Avatarka.png'
@@ -14,9 +14,12 @@ type UsersPropsType = {
 class UsersClassComponent extends React.Component<UsersPropsType> {
 
     componentDidMount() {
-        axios.get<UsersPageType>("https://social-network.samuraijs.com/api/1.0/users")
+        debugger
+        axios.get<UsersPageType>("https://social-network.samuraijs.com/api/1.0//users")
             .then(response => {
+                debugger
                 this.props.setUsers(response.data.items)
+
             });
     }
 

@@ -4,6 +4,7 @@ import ReactDOM from "react-dom";
 import App from './App'
 import {BrowserRouter} from "react-router-dom";
 import {Provider} from "react-redux";
+import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
     <BrowserRouter>
@@ -13,4 +14,4 @@ ReactDOM.render(
     </BrowserRouter>, document.getElementById('root'))
 
 
-
+reportWebVitals();

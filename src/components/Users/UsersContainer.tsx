@@ -5,6 +5,7 @@ import {AppDispatch, AppStateType} from "../../redux/redux-store";
 import UsersClassComponent from "./UsersClassComponent";
 
 
+
 const mapStateToProps = (state: AppStateType) => {
     return {
         usersPageType: state.usersPageType
