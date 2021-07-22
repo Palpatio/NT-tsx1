@@ -1,9 +1,8 @@
-import {connect} from "react-redux";
 import {followAC, setUsersAC, unfollowAC} from "../../redux/users-reducer";
 import {UsersType} from "../../types/types";
 import {AppDispatch, AppStateType} from "../../redux/redux-store";
 import UsersClassComponent from "./UsersClassComponent";
-
+import {connect} from "react-redux";
 
 
 const mapStateToProps = (state: AppStateType) => {
@@ -11,8 +10,7 @@ const mapStateToProps = (state: AppStateType) => {
         usersPageType: state.usersPageType
     }
 }
-
-const mapDispatchToProps = (dispatch:AppDispatch) => {
+const mapDispatchToProps = (dispatch: AppDispatch) => {
     return {
         follow: (userID: number) => {
             dispatch(followAC(userID))
@@ -20,11 +18,12 @@ const mapDispatchToProps = (dispatch:AppDispatch) => {
         unfollow: (userID: number) => {
             dispatch(unfollowAC(userID))
         },
-        setUsers: (users: UsersType[])=> {
+        setUsers: (users: UsersType[]) => {
             dispatch(setUsersAC(users))
         }
     }
 }
-const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps) (UsersClassComponent);
+
+const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(UsersClassComponent);
 
 export default MyPostsContainer;

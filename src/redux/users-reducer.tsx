@@ -6,6 +6,7 @@ const UNFOLLOW = 'UNFOLLOW'
 
 const initialState = {
     items: [],
+
 };
 
 const usersReducer = (state: UsersPageType = initialState, action: ActionsType): UsersPageType => {
@@ -15,9 +16,8 @@ const usersReducer = (state: UsersPageType = initialState, action: ActionsType):
         case 'UNFOLLOW':
             return {...state, items: state.items.map(u => u.id === action.userID ? {...u, followed: false} : u)}
         case 'SET-USERS':
-           let a =  {...state, items: [...state.items, ...action.users]}
-            debugger
-            return a
+            return {...state, items: [...state.items, ...action.users]}
+
         default:
             return state;
     }

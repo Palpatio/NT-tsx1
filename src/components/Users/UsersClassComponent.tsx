@@ -17,7 +17,6 @@ class UsersClassComponent extends React.Component<UsersPropsType> {
         debugger
         axios.get<UsersPageType>("https://social-network.samuraijs.com/api/1.0//users")
             .then(response => {
-                debugger
                 this.props.setUsers(response.data.items)
 
             });
@@ -25,7 +24,8 @@ class UsersClassComponent extends React.Component<UsersPropsType> {
 
     render() {
         return (
-            <div>
+        <div>
+
                 {this.props.usersPageType.items.map(u => <div key={u.id}>
                 <span>
                     <div><img src={u.photos.small ? u.photos.small : userPhoto} alt="avatar" className={s.usersPhoto}/></div>
