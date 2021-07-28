@@ -1,11 +1,13 @@
 import {UsersPageType, UsersType} from "../types/types";
-import {ActionsType, FollowUserAT, SetUsersAT, UnfollowUserAT} from "../types/dispatchTypes";
+import {ActionsType, FollowUserAT, SetCurrentAT, SetUsersAT, UnfollowUserAT} from "../types/dispatchTypes";
 
-const FOLLOW = 'FOLLOW'
-const UNFOLLOW = 'UNFOLLOW'
 
 const initialState = {
     items: [],
+    pageSize: 5,
+    totalUsersCount: 20,
+    currentPage: 1
+
 
 };
 
@@ -16,7 +18,9 @@ const usersReducer = (state: UsersPageType = initialState, action: ActionsType):
         case 'UNFOLLOW':
             return {...state, items: state.items.map(u => u.id === action.userID ? {...u, followed: false} : u)}
         case 'SET-USERS':
-            return {...state, items: [...state.items, ...action.users]}
+            return {...state, items: action.users}
+        case "SET-CURRENT":
+            return {...state, currentPage: action.currentPage}
 
         default:
             return state;
@@ -32,7 +36,10 @@ export const unfollowAC = (userID: number): UnfollowUserAT => {
 }
 
 export const setUsersAC = (users: UsersType[]): SetUsersAT => {
-    debugger
     return {type: 'SET-USERS', users}
+}
+
+export const setCurrentAC = (currentPage: number): SetCurrentAT => {
+    return {type: 'SET-CURRENT', currentPage}
 }
 export default usersReducer;

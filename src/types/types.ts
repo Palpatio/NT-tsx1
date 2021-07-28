@@ -23,9 +23,14 @@ export type UsersType = {
     }
     status: string | null
     followed: boolean
+
+
 }
 
 export type UsersPageType = {
+    currentPage: number
+    pageSize: number,
+    totalUsersCount:number,
     items: UsersType[]
 }
 export type ProfilePageType = {

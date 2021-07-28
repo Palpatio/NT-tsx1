@@ -9,13 +9,27 @@ type UsersPropsType = {
     follow: (userID: number) => void
     unfollow: (userID: number) => void
     setUsers: (users: UsersType[]) => void
+    setCurrentPage: (currentPage: number) => void
 }
 
 class UsersClassComponent extends React.Component<UsersPropsType> {
 
     componentDidMount() {
-        debugger
-        axios.get<UsersPageType>("https://social-network.samuraijs.com/api/1.0//users")
+        axios.get<UsersPageType>
+        (`https://social-network.samuraijs.com/api/1.0//users?page=$
+        {this.props.usersPageType.currentPage}&count=${this.props.usersPageType.pageSize}`)
+            .then(response => {
+                this.props.setUsers(response.data.items)
+
+            });
+    }
+
+
+    onPageChanged = (p: number) => {
+        this.props.setCurrentPage(p);
+        axios.get<UsersPageType>
+        (`https://social-network.samuraijs.com/api/1.0//users?page=$
+        {currentPage}&count=${this.props.usersPageType.pageSize}`)
             .then(response => {
                 this.props.setUsers(response.data.items)
 
@@ -23,8 +37,24 @@ class UsersClassComponent extends React.Component<UsersPropsType> {
     }
 
     render() {
+
+        let pagesCount = Math.ceil(this.props.usersPageType.totalUsersCount / this.props.usersPageType.pageSize);
+        let pages = [];
+        for (let i = 1; i <= pagesCount; i++) {
+            pages.push(i);
+        }
+
         return (
-        <div>
+            <div>
+                <div>
+                    {pages.map(p => {
+                        return <span
+                            className={this.props.usersPageType.currentPage === p ? s.selectedPage : ''}
+                            onClick={(e) => {
+                                this.onPageChanged(p)
+                            }}>{p}</span>
+                    })}
+                </div>
 
                 {this.props.usersPageType.items.map(u => <div key={u.id}>
                 <span>

@@ -33,6 +33,11 @@ export type SetUsersAT = {
     type: 'SET-USERS'
     users: UsersType[]
 }
+export type SetCurrentAT = {
+    type: 'SET-CURRENT'
+    currentPage: number
+
+}
 
 export type ActionsType = SendMessageAT
     | UpdateNewMessageBodyAT
@@ -41,3 +46,4 @@ export type ActionsType = SendMessageAT
     | FollowUserAT
     | UnfollowUserAT
     | SetUsersAT
+    | SetCurrentAT
